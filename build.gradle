@@ -1,9 +1,17 @@
+ext
+        {
+            //add property and version info here
+           jdkVersion = 1.8
+        }
+
+
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
+        classpath('se.transmode.gradle:gradle-docker:1.2')
     }
 }
 
@@ -11,11 +19,18 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'docker'
+apply plugin: 'pmd'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+
+
 
 jar {
-    baseName = 'gs-serving-web-content'
+    baseName = 'rifs-web'
     version =  '0.1.0'
 }
+
 
 repositories {
     mavenCentral()
@@ -25,8 +40,143 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("junit:junit")
 }
+
+
+//docker group repo
+//group = 'rifs'
+
+//docker task
+task buildDocker(type: Docker, dependsOn: build) {
+    //push = true
+    applicationName = jar.baseName
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
+}
+
+
+// Test Structure
+sourceSets {
+    integTest {
+        java.srcDir file('src/it/java')
+        resources.srcDir file('src/it/resources')
+    }
+}
+
+//Integration Test task
+task integTest(type: Test) {
+    testClassesDir = sourceSets.integTest.output.classesDir
+    classpath = sourceSets.integTest.runtimeClasspath
+}
+
+
+check.dependsOn integTest
+
+dependencies {
+    // ...
+    integTestCompile sourceSets.main.output
+    integTestCompile configurations.testCompile
+    integTestCompile sourceSets.test.output
+    integTestRuntime configurations.testRuntime
+    // ...
+}
+
+
+//sonarcube
+apply plugin: 'org.sonarqube'
+
+sonarqube
+        {
+            properties
+                    {
+                        property "sonar.rifs-web", "rifs-web"
+                        property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
+                    }
+        }
+
+buildscript
+        {
+            repositories
+                    {
+                        maven
+                                {
+                                    url "https://plugins.gradle.org/m2/"
+                                }
+                    }
+            dependencies
+                    {
+                        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.0-rc1"
+                    }
+        }
+
+
+        checkstyle
+                {
+                    ignoreFailures = true
+                    configFile = file("config/checkstyle/checkstyle.xml")
+                }
+
+        findbugs
+                {
+                    toolVersion = "3.0.1"
+                    sourceSets = [sourceSets.main]
+                    effort = "max"
+                    reportLevel = "high"
+                    ignoreFailures = true
+
+                }
+
+        pmd
+                {
+                    ignoreFailures = true
+                    //consider other rulesets
+                    //5.2.2 - http://pmd.sourceforge.net/pmd-5.2.2/pmd-java/rules/index.html
+                    // useful list of actual names for build file http://stackoverflow.com/questions/25584501/how-to-find-pmd-rulesets-names-in-gradle-2-0
+                    toolVersion = '5.2.2'
+                    ruleSets = ["java-basic", "java-braces", "java-codesize", "java-clone", "java-codesize", "java-comments"
+                                , "java-controversial", "java-coupling", "java-design", "java-empty", "java-finalizers"
+                                , "java-imports", "java-j2ee", "java-javabeans", "java-junit", "java-logging-java", "java-migrating"
+                                , "java-naming", "java-optimizations", "java-strictexception", "java-strings", "java-sunsecure"
+                                , "java-typeresolution", "java-unnecessary", "java-unusedcode"]
+
+                    /*
+                    //Consider source sets
+                    sourceSets
+                    {
+                          main
+                          {
+                             java
+                             {
+                                srcDir 'src/java'
+                             }
+                          }
+
+                          test
+                          {
+                             java
+                             {
+                                srcDir 'test/java'
+                             }
+                          }
+
+                          integrationTest
+                          {
+                             java
+                             {
+                                srcDir 'src/java-test'
+                             }
+                          }
+                       }
+                    */
+                }
 
