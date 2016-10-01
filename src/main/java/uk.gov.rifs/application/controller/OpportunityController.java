@@ -11,19 +11,19 @@ public class OpportunityController {
     @RequestMapping("/opportunitylist")
     public String showOpportunityList(Model model) {
 
-        return "/opportunity/opportunitylist";
+        return "opportunity/opportunitylist";
     }
 
     @RequestMapping("/opportunityoverview")
     public String showOpportunityOverview(Model model) {
 
-        return "/opportunity/opportunityoverview";
+        return "opportunity/opportunityoverview";
     }
 
     @RequestMapping("/opportunitydescription")
     public String showOpportunityDesription(Model model) {
 
-        return "/opportunity/opportunitydescription";
+        return "opportunity/opportunitydescription";
     }
 
 }

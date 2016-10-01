@@ -173,7 +173,7 @@ buildscript
                           {
                              java
                              {
-                                srcDir 'src/java-test'
+                                srcDir 'src/it'
                              }
                           }
                        }

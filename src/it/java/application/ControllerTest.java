@@ -1,5 +1,4 @@
-/*
-package application;
+package uk.gov.rifs.application.controller;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,16 +15,15 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ApplicationTest {
+public class ControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     public void showOpportunityLinksTest() throws Exception {
-        mockMvc.perform(get("/opportunitylinks"))
-                .andExpect(content().string(containsString("Opportunity Links")));
+        mockMvc.perform(get("/welcome"))
+                .andExpect(content().string(containsString("What is your role")));
     }
 
 }
-*/
