@@ -8,9 +8,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class OpportunityController {
 
-    @RequestMapping("/opplist")
-    public String showOpportunityList(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
-        return "opplist";
+    @RequestMapping("/opportunitylist")
+    public String showOpportunityList(Model model) {
+
+        return "opportunity/opportunitylist";
+    }
+
+    @RequestMapping("/opportunityoverview")
+    public String showOpportunityOverview(Model model) {
+
+        return "opportunity/opportunityoverview";
+    }
+
+    @RequestMapping("/opportunitydescription")
+    public String showOpportunityDesription(Model model) {
+
+        return "opportunity/opportunitydescription";
     }
 
 }

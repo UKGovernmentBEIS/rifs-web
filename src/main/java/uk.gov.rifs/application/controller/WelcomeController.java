@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ApplicationController {
+public class WelcomeController {
 
-    @RequestMapping("/opportunitylinks")
-    public String showOpportunityLinks(Model model) {
+    @RequestMapping("/welcome")
+    public String greeting(Model model) {
 
-        return "/application/opportunitylinks";
+        return "welcome";
     }
-
 }
