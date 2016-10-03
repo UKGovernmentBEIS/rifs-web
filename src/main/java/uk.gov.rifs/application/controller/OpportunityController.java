@@ -5,6 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import uk.gov.rifs.application.model.Opportunity;
+import uk.gov.rifs.application.model.OpportunityValueItem;
+
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
 @Controller
 public class OpportunityController {
 
@@ -17,7 +24,15 @@ public class OpportunityController {
     @RequestMapping("/opportunityoverview")
     public String showOpportunityOverview(Model model) {
 
+        RestTemplate restTemplate = new RestTemplate();
+        uk.gov.rifs.application.model.Opportunity opp = restTemplate.getForObject("http://rifs-business-rifs-test.test.int.ukrifs.org/opportunity/1", uk.gov.rifs.application.model.Opportunity.class);
+        //log.info(quote.toString());
+        System.out.println("HERE");
+        System.out.println("opp.title = " + opp.getTitle() );
+        System.out.println("opp = " + opp.toString());
         return "opportunity/opportunityoverview";
+
+
     }
 
     @RequestMapping("/opportunitydescription")
