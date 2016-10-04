@@ -6,10 +6,24 @@
 </head>
 <body>
 
-<h2>RIFS00001: Exploring innovation seminars</h2>
+<h1 th:text="${opportunity.title}" />
+
 <h1>Application overview</h1>
 <p>
 Complete all sections before submitting.
 </p>
+
+
+<p>
+<p th:text="'The start date is ' + ${opportunity.startDate}" />
+</p>
+
+<p>
+<p th:text="'The value unit is ' + ${opportunity.value.unit}" />
+<p th:text="'The value amount is ' + ${opportunity.value.amount}" />
+</p>
+
+
+
 </body>
 </html>

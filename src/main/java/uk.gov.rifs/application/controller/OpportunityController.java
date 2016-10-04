@@ -32,23 +32,24 @@ public class OpportunityController {
     @RequestMapping(value="/opportunityoverview/{id}", method= RequestMethod.GET)
     public String showOpportunityOverview(@PathVariable("id") long id, Model model) {
 
-        System.out.println("test_prop = " + getSingleOpportunityURL);
-
         RestTemplate restTemplate = new RestTemplate();
 
-        Opportunity opp = restTemplate.getForObject(getSingleOpportunityURL + id, Opportunity.class);
+        Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL + id, Opportunity.class);
 
-        System.out.println("HERE");
-
-        //System.out.println("opp = " + opp.toString());
+        model.addAttribute("opportunity", opportunity);
 
         return "opportunity/opportunityoverview";
-
 
     }
 
     @RequestMapping(value="/opportunitydescription/{id}", method= RequestMethod.GET)
     public String showOpportunityDesription(@PathVariable("id") long id, Model model) {
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL + id, Opportunity.class);
+
+        model.addAttribute("opportunity", opportunity);
 
         return "opportunity/opportunitydescription";
     }

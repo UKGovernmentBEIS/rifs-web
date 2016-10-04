@@ -6,7 +6,17 @@
 </head>
 <body>
 
-<h1>Exploring innovation seminars</h1>
+<h1 th:text="${opportunity.title}" />
+
+<p>
+<p th:text="'The start date is ' + ${opportunity.startDate}" />
+</p>
+
+<p>
+<p th:text="'The value unit is ' + ${opportunity.value.unit}" />
+<p th:text="'The value amount is ' + ${opportunity.value.amount}" />
+</p>
+
 <p>
 3. Assessment criteria
 2. What we will ask you
