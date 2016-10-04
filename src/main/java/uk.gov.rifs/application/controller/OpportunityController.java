@@ -3,13 +3,7 @@ package uk.gov.rifs.application.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import uk.gov.rifs.application.model.Opportunity;
-import uk.gov.rifs.application.model.OpportunityValueItem;
-
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
