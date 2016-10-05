@@ -3,6 +3,7 @@ package uk.gov.rifs.application.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.*;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Created by venkata on 30/09/16.
@@ -16,8 +17,8 @@ public class Opportunity {
     //Needs to be a date
     private String startDate;
     //will be a list at some point
-    private Value valueItem;
-    //private List <Description> sections;
+    private Value value;
+    private List <Description> description;
 
     public Long getId() {
         return this.id;
@@ -31,8 +32,12 @@ public class Opportunity {
         return this.startDate;
     }
 
-    public Value getValueItem() {
-        return this.valueItem;
+    public Value getValue() {
+        return this.value;
+    }
+
+    public List <Description> getDescription() {
+        return this.description;
     }
 
     public void setId(Long id) {
@@ -41,23 +46,28 @@ public class Opportunity {
 
     public void setTitle(String title) {
         this.title = title;
+        System.out.println("IN SETTER: " + title);
     }
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public void setValueItem(Value valueItem) {
-        this.valueItem = valueItem;
+    public void setValue(Value value) {
+        this.value = value;
+        System.out.println("IN value SETTER: " + value.getUnit());
+    }
+
+    public void setDescription (List <Description> description)
+    {
+        this.description = description;
+        System.out.println("IN Desc SETTER: " );
     }
 
     @Override
     public String toString() {
-        return "Opportunity{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", startDate='" + startDate + '\'' +
-                '}';
+
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

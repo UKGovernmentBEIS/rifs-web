@@ -1,6 +1,7 @@
 package uk.gov.rifs.application.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Created by venkata on 30/09/16.
@@ -21,7 +22,7 @@ public class Value {
     }
 
     public void setUnit(String unit) {
-        this.amount = amount;
+        this.unit = unit;
     }
 
     public void setAmount(Double amount) {
@@ -30,10 +31,12 @@ public class Value {
 
     @Override
     public String toString() {
-        return "OpportunityValueItem{" +
-               ", unit='" + unit + '\'' +
-                ", amount='" + amount + '\'' +
-                '}';
+//        return "OpportunityValueItem{" +
+//               ", unit='" + unit + '\'' +
+//                ", amount='" + amount + '\'' +
+//                '}';
+
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }
