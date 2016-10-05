@@ -5,10 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * Created by venkata on 30/09/16.
- */
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Opportunity {
 
@@ -71,6 +67,3 @@ public class Opportunity {
     }
 
 }
-
-
-
