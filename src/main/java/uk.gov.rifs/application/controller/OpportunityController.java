@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import uk.gov.rifs.application.model.*;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -23,9 +24,18 @@ public class OpportunityController {
     @Value("${dataservice.url.getsingleopportunity}")
     String getSingleOpportunityURL;
 
+    @Value("${dataservice.url.getopportunitylist}")
+    String getOpportunityListURL;
+
+
     @RequestMapping("/opportunitylist")
     public String showOpportunityList(Model model) {
 
+        RestTemplate restTemplate = new RestTemplate();
+
+        List<Opportunity> opportunityList = Arrays.asList(restTemplate.getForObject(getOpportunityListURL, Opportunity[].class));
+
+        model.addAttribute("opportunityList", opportunityList);
         return "opportunity/opportunitylist";
     }
 
