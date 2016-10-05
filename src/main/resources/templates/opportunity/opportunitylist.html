@@ -1,17 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link type="text/css" href="/css/style.css" rel="Stylesheet" />
     <title>RIFS</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Open opportunities</h1>
-<p>
+<div th:include="fragments/elements :: header-logo" th:remove="tag" />
 
-Links to all open opportunities in RIFS
-</p>
+<div id="middleframe" >
 
-<a href="opportunityoverview/1">Exploring innovation seminars</a>
+    <h1>Open opportunities</h1>
+    <p>
+
+        Links to all open opportunities in RIFS
+    </p>
+
+    <a href="opportunityoverview/1">Exploring innovation seminars</a>
+</div>
 
 </body>
 </html>

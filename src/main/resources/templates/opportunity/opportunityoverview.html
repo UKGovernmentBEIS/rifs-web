@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link type="text/css" href="/css/style.css" rel="Stylesheet" />
-    <title>Getting Started: Serving Web Content</title>
+    <title>RIFS</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -10,16 +10,26 @@
 
 <div id="middleframe" >
 
-<h1>Exploring innovation seminars</h1>
-<p>
-3. Assessment criteria
-2. What we will ask you
-1. About this opportunity
-</p>
+    <h1 th:text="${opportunity.title}" />
 
-<p>
-    <a href="opportunitydescription">Make an application</a>
-</p>
-    </div>
+    <p>
+    <p th:text="'The start date is ' + ${opportunity.startDate}" />
+    </p>
+
+    <p>
+    <p th:text="'The value unit is ' + ${opportunity.value.unit}" />
+    <p th:text="'The value amount is ' + ${opportunity.value.amount}" />
+    </p>
+
+    <p>
+    3. Assessment criteria
+    2. What we will ask you
+    1. About this opportunity
+    </p>
+
+    <p>
+        <a href="../opportunitydescription/1">Make an application</a>
+    </p>
+</div>
 </body>
 </html>
