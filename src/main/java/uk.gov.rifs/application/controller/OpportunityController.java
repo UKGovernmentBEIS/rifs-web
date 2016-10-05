@@ -64,4 +64,10 @@ public class OpportunityController {
         return "opportunity/opportunitydescription";
     }
 
+    @RequestMapping("/opportunityuserroles")
+    public String opportunityUserRoles(Model model) {
+
+        return "opportunity/opportunityuserroles";
+    }
+
 }
