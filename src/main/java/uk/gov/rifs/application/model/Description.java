@@ -2,12 +2,8 @@ package uk.gov.rifs.application.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import java.util.*;
-import java.time.LocalDate;
 
-/**
- * Created by venkata on 30/09/16.
- */
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Description {
@@ -47,6 +43,3 @@ public class Description {
     }
 
 }
-
-
-

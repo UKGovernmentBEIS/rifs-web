@@ -3,10 +3,6 @@ package uk.gov.rifs.application.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * Created by venkata on 30/09/16.
- */
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Value {
 
@@ -40,6 +36,3 @@ public class Value {
     }
 
 }
-
-
-
