@@ -4,6 +4,11 @@ ext
            jdkVersion = 1.8
         }
 
+//applicationDefaultJvmArgs = [ "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005" ]
+//
+//task bootRun {
+//    jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"
+//}
 
 buildscript {
     repositories {
@@ -45,6 +50,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework:spring-web")
     compile("com.fasterxml.jackson.core:jackson-databind")
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("junit:junit")
 }
