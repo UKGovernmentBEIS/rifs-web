@@ -7,29 +7,36 @@
 </head>
 <body>
 <div th:include="fragments/elements :: header-logo" th:remove="tag"/>
+<div th:include="fragments/elements :: guidance" th:remove="tag"/>
 
 <div id="middleframe">
+    <a href="" onclick="history.go(-1);" >&lt; Back </a>
 
-    <h1 th:text="${opportunity.title}"/>
+    <h2 style="color:grey;" th:text="${opportunity.title}"/>
+    <h1>Application overview</h1>
+    <h3>Complete all sections before submitting. </h3>
 
-    <p>
-    <p th:text="'The start date is ' + ${opportunity.startDate}"/>
-    </p>
+    <div class="oppoverviewtextleft"><b>Event details</b></div>    <div class="oppoverviewtextright"><b>Status</b></div>
+    <hr/>
+    <div class="oppoverviewtextleft">1. Event title</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
+    <hr/>
+    <div class="oppoverviewtextleft">2. Provisional date</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
+    <hr/>
+    <div class="oppoverviewtextleft">3. Event objectives</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
+    <hr/>
+    <div class="oppoverviewtextleft">4. Topics and speakers</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
+    <hr/>
+    <div class="oppoverviewtextleft">5. Event audience</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
+    <hr/>
+    <div class="oppoverviewtextleft">6. Costs</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
+    <hr/>
 
-    <p>
-    <p th:text="'The value unit is ' + ${opportunity.value.unit}"/>
-    <p th:text="'The value amount is ' + ${opportunity.value.amount}"/>
-    </p>
+    <p><div id="submitapplicationbutton"  width="190"><a th:href="@{'/opportunityoverview/' + ${opportunity.id}}" >Submit application to RIFS </a> </div> </p>
+    <br/>
+    <div id="bottomsection"/>
+    <div id="bottomtopborder"/>
 
-    <p>
-        3. Assessment criteria
-        2. What we will ask you
-        1. About this opportunity
-    </p>
-
-    <p>
-        <a href="../opportunitydescription/1">Make an application</a>
-    </p>
 </div>
+
 </body>
 </html>

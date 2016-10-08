@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RIFS</title>
+    <link type="text/css" href="/css/style.css" rel="Stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<div th:include="fragments/elements :: header-logo" th:remove="tag"/>
+<div th:include="fragments/elements :: guidance" th:remove="tag"/>
+
+<div id="middleframe">
+
+        <a href="/opportunitylist">&lt; Return to opportunity list </a>
+
+               <div class="oppheading">
+                 <br/>  <b> <span th:text="${opportunity.title}"/></b>
+               </div>
+
+                <div class="oppdescriptionlinks">
+                    <ol type="1">
+                        <li  th:each="description : ${descriptions}" >
+                            <p>
+                                <a th:href="@{'/opportunitydetails/' + ${opportunity.id} +'/?oppdescription=' + ${description.sectionNumber}}">
+                                    <span th:text="${description.title}"/>
+                                </a>
+                            </p>
+                         </li>
+                    </ol>
+                </div>
+
+        <div id="oppdetailsblockleftborder" />
+
+        <div id="oppdetailsblock" >
+            <div id="opppharastartdate" >
+                <p> <b><span>Start date  </span></b> </p>
+                <span th:text="${opportunity.startDate}"></span>
+                <p><div id="applybutton" ><a th:href="@{'/opportunityoverview/' + ${opportunity.id}}" >Apply now </a> </div></p>
+            </div>
+            <div id="opppharavalue" >
+                <p> <b> <span>Value  </span></b> </p>
+                <span th:text="${opportunity.value.amount}"></span>
+            </div>
+        </div>
+
+
+        <div id="oppdescription">
+            <p> <b> <span th:text="${oppdescription}"/>. <span th:text="${descriptions[oppdescription-1].title}"/></b> </p>
+            <div class="opppharas">
+                    <span th:each="paragraph : ${descriptions[oppdescription-1].paragraphs}" >
+                        <p>
+                            <span th:text="${paragraph}"/>
+                        </p>
+                    </span>
+                <p><div id="applybutton" > <a th:href="@{'/opportunityoverview/' + ${opportunity.id}}" >Apply now </a></div></p>
+
+            </div>
+
+        </div>
+</div>
+
+</body>
+</html>
