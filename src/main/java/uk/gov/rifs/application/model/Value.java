@@ -27,11 +27,6 @@ public class Value {
 
     @Override
     public String toString() {
-//        return "OpportunityValueItem{" +
-//               ", unit='" + unit + '\'' +
-//                ", amount='" + amount + '\'' +
-//                '}';
-
         return ToStringBuilder.reflectionToString(this);
     }
 

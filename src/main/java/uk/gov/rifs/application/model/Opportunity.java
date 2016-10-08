@@ -1,9 +1,9 @@
 package uk.gov.rifs.application.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.util.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Opportunity {
@@ -14,7 +14,7 @@ public class Opportunity {
     private String startDate;
     //will be a list at some point
     private Value value;
-    private List <Description> description;
+    private List<Description> description;
 
     public Long getId() {
         return this.id;
@@ -32,7 +32,7 @@ public class Opportunity {
         return this.value;
     }
 
-    public List <Description> getDescription() {
+    public List<Description> getDescription() {
         return this.description;
     }
 
@@ -54,10 +54,9 @@ public class Opportunity {
         System.out.println("IN value SETTER: " + value.getUnit());
     }
 
-    public void setDescription (List <Description> description)
-    {
+    public void setDescription(List<Description> description) {
         this.description = description;
-        System.out.println("IN Desc SETTER: " );
+        System.out.println("IN Desc SETTER: ");
     }
 
     @Override
