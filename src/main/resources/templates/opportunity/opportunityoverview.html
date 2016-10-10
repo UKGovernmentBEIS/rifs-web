@@ -18,18 +18,11 @@
 
     <div class="oppoverviewtextleft"><b>Event details</b></div>    <div class="oppoverviewtextright"><b>Status</b></div>
     <hr/>
-    <div class="oppoverviewtextleft">1. Event title</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
-    <hr/>
-    <div class="oppoverviewtextleft">2. Provisional date</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
-    <hr/>
-    <div class="oppoverviewtextleft">3. Event objectives</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
-    <hr/>
-    <div class="oppoverviewtextleft">4. Topics and speakers</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
-    <hr/>
-    <div class="oppoverviewtextleft">5. Event audience</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
-    <hr/>
-    <div class="oppoverviewtextleft">6. Costs</div>    <div class="oppoverviewtextright"><b>Not started</b></div>
-    <hr/>
+             <span  th:each="section,iterStat : ${app.sections}" >
+                <div class="oppoverviewtextleft">  <span th:text="${iterStat.index+1} "/>.  <span th:text="${section.title}"/> </div>    <div class="oppoverviewtextright"><b>Not started</b></div>
+                <hr/>
+            </span>
+
 
     <p><div id="submitapplicationbutton"  width="190"><a th:href="@{'/opportunityoverview/' + ${opportunity.id}}" >Submit application to RIFS </a> </div> </p>
     <br/>

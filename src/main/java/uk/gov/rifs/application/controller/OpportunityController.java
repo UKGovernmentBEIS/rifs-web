@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import uk.gov.rifs.application.model.Application;
 import uk.gov.rifs.application.model.Description;
 import uk.gov.rifs.application.model.Opportunity;
 
@@ -67,7 +68,9 @@ public class OpportunityController {
     public String showOpportunityOverview(@PathVariable("id") long id, Model model) {
         RestTemplate restTemplate = new RestTemplate();
         Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL() + id, Opportunity.class);
+        Application application = restTemplate.getForObject(getSingleOpportunityURL() + id + "/application", Application.class);
         model.addAttribute("opportunity", opportunity);
+        model.addAttribute("app", application);
 
         return "opportunity/opportunityoverview";
     }
