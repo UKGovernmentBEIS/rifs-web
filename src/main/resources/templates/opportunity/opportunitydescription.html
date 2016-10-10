@@ -6,26 +6,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
+
 <div th:include="fragments/elements :: header-logo" th:remove="tag"/>
 
 <div id="middleframe">
+    <a href="../opportunitylist">&lt; Return to opportunity list </a>
 
-    <h1 th:text="${opportunity.title}"/>
+    <div id="oppheading" th:text="${opportunity.title}"/>
 
-    <h1>Application overview</h1>
-    <p>
-        Complete all sections before submitting.
-    </p>
-
-    <p>
-    <p th:text="'The start date is ' + ${opportunity.startDate}"/>
-    </p>
-
-    <p>
-    <p th:text="'The value unit is ' + ${opportunity.value.unit}"/>
-    <p th:text="'The value amount is ' + ${opportunity.value.amount}"/>
-    </p>
-
+        <div th:each="description,iterStat : ${opportunity.description}" >
+            <p>
+                <a href="../opportunitydescription/1">
+                    <span th:text="${iterStat.index+1} "/>. <span th:text="${description.title}"/>
+                </a>
+            </p>
+       </div>
 
 </div>
 

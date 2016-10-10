@@ -10,13 +10,26 @@
 
 <div id="middleframe">
     <h1>Open opportunities</h1>
-    <p>
+    <h2>Links to all open opportunities in RIFS</h2>
+    <br/> <h2>Opportunity title</h2>
+    <hr/>
+    <div id="opplist">
+        <div th:each="opportunity,iterStat : ${opportunityList}" >
+            <p>
+                <a th:href="@{'/opportunitydetails/' + ${opportunity.id} }">
+                <span th:text="${iterStat.index+1} "/>. <span th:text="${opportunity.title}"/>
+                </a>
+            </p>
+            <hr/>
+        </div>
+    </div>
 
-        Links to all open opportunities in RIFS
-    </p>
+    <br/>
+    <div id="bottomsection"/>
+    <div id="bottomtopborder"/>
 
     <a href="opportunityoverview/1">Exploring innovation seminars</a>
 </div>
-
+<br/>
 </body>
 </html>

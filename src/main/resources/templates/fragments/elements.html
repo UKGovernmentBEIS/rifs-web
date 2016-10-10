@@ -1,17 +1,29 @@
-<!-- ===========================Element: Header logo =========================== -->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- ===========================Element: Header =========================== -->
 
 <div th:fragment="header-logo">
     <div id="overlapframe" >.</div>
     <div id="topframe" >
-    <div class="header-logo">
-        <p>  <img src="/images/u20.png" />    &nbsp;
-
-        <!--<a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content">
-
-             <img src="/images/gov.uk_logotype_crown.png" th:src="${@mvcResourceUrlProvider.getForLookupPath('/images/gov.uk_logotype_crown.png')}" width="35" height="31" alt="" />
-            GOV.UK
-        </a> -->
+        <p>  <img src="/images/u20.png" align="top" />  &nbsp;&nbsp;&nbsp;
         Research and Innovation Funding Service</p>
     </div>
-    </div>
 </div>
+
+<!-- ===========================Element: Header ends =========================== -->
+
+<!-- ===========================Element: Guidance frame =========================== -->
+
+<div th:fragment="guidance">
+    <div id="guidanceframe" >
+        <p><b>Supporting information</b></p>
+        <!--<p><a th:href="@{'/opportunitydddd/' +  (${opportunity == null}) ? ${id}  : ${opportunity.id} }" >Guidance on seminars zzzz</a></p> -->
+        <p><a href="/guidance" >Guidance on seminars</a></p>
+    </div>
+    <div id="guidanceframetopline" />
+</div>
+
+<!-- ===========================Element: Guidance frame ends=========================== -->
+
+</html>
