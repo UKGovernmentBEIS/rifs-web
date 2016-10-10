@@ -106,5 +106,8 @@ public class OpportunityController {
         model.addAttribute("id", id);
         return "opportunity/guidanceonseminarsforopp";
     }
-
+    @RequestMapping(value = "/dummypage", method = RequestMethod.GET)
+    public String dummypage() {
+        return "opportunity/dummypage";
+    }
 }
