@@ -36,7 +36,7 @@
             <div id="opppharastartdate" >
                 <p> <b><span>Start date  </span></b> </p>
                 <span th:text="${opportunity.startDate}"></span>
-                <p><div id="applybutton" ><a th:href="@{'/opportunityoverview/' + ${opportunity.id}}" >Apply now </a> </div></p>
+                <p><div id="applybutton" ><a th:href="@{'/application/' + ${opportunity.id}}" >Apply now </a> </div></p>
             </div>
             <div id="opppharavalue" >
                 <p> <b> <span>Value  </span></b> </p>
@@ -53,7 +53,7 @@
                             <span th:text="${paragraph}"/>
                         </p>
                     </span>
-                <p><div id="applybutton" > <a th:href="@{'/opportunityoverview/' + ${opportunity.id}}" >Apply now </a></div></p>
+                <p><div id="applybutton" > <a th:href="@{'/opportunityApplicationoverview/' + ${opportunity.id}}" >Apply now </a></div></p>
 
             </div>
 
