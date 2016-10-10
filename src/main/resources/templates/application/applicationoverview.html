@@ -9,6 +9,10 @@
 <div th:include="fragments/elements :: header-logo" th:remove="tag"/>
 <div th:include="fragments/elements :: guidance" th:remove="tag"/>
 
+<div id="guidanceopplink">
+    <a th:href="@{'/opportunitydetails/' + ${opportunity.id} }"> View opportunity details</a>
+</div>
+
 <div id="middleframe">
     <a href="" onclick="history.go(-1);" >&lt; Back </a>
 
@@ -22,10 +26,11 @@
                 <div class="oppoverviewtextleft">  <span th:text="${iterStat.index+1} "/>.  <span th:text="${section.title}"/> </div>    <div class="oppoverviewtextright"><b>Not started</b></div>
                 <hr/>
             </span>
+    <div class="oppoverviewtextright"> <a href="/dummypage"><br/> Preview this page</a> </div>
 
-
-    <p><div id="submitapplicationbutton"  width="190"><a th:href="@{'/opportunityApplicationoverview/' + ${opportunity.id}}" >Submit application to RIFS </a> </div> </p>
-    <br/>
+    <div id="submitapplicationbutton"  width="190"><a th:href="@{'/application/' + ${opportunity.id}}" >Submit application to RIFS </a>
+        </div>
+    <br/><br/>
     <div id="bottomsection"/>
     <div id="bottomtopborder"/>
 

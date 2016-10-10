@@ -10,6 +10,14 @@
 <div th:include="fragments/elements :: header-logo" th:remove="tag"/>
 <div th:include="fragments/elements :: guidance" th:remove="tag"/>
 
+
+<div id="guidancecounter">
+  <br/> <b> <font face="arial" size="75">0/6</font></b>
+    <br/>
+    Section complete
+</div>
+
+
 <div id="middleframe">
 
         <a href="/opportunitylist">&lt; Return to opportunity list </a>
@@ -34,13 +42,13 @@
 
         <div id="oppdetailsblock" >
             <div id="opppharastartdate" >
-                <p> <b><span>Start date  </span></b> </p>
-                <span th:text="${opportunity.startDate}"></span>
+                <p> <b><span>Deadline  </span></b> </p>
+                <span>Apply at any time</span>
                 <p><div id="applybutton" ><a th:href="@{'/application/' + ${opportunity.id}}" >Apply now </a> </div></p>
             </div>
             <div id="opppharavalue" >
                 <p> <b> <span>Value  </span></b> </p>
-                <span th:text="${opportunity.value.amount}"></span>
+                Up to <span th:text="${opportunity.value.amount}"></span>  per event
             </div>
         </div>
 
@@ -53,7 +61,7 @@
                             <span th:text="${paragraph}"/>
                         </p>
                     </span>
-                <p><div id="applybutton" > <a th:href="@{'/opportunityApplicationoverview/' + ${opportunity.id}}" >Apply now </a></div></p>
+                <p><div id="applybutton" > <a th:href="@{'/application/' + ${opportunity.id}}" >Apply now </a></div></p>
 
             </div>
 
