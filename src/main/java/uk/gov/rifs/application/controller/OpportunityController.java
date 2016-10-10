@@ -24,11 +24,22 @@ import java.util.stream.Collectors;
 @PropertySource("classpath:config.properties")
 public class OpportunityController {
 
+    @Value("${dataservice.host}")
+    String hostName;
+
     @Value("${dataservice.url.getsingleopportunity}")
-    String getSingleOpportunityURL;
+    String singleOpportunityURL;
 
     @Value("${dataservice.url.getopportunitylist}")
-    String getOpportunityListURL;
+    String opportunityListURL;
+
+    String getSingleOpportunityURL() {
+        return hostName + singleOpportunityURL;
+    }
+
+    String getOpportunityListURL() {
+        return hostName + opportunityListURL;
+    }
 
     /**
      * Method to get opportunitylist
@@ -40,7 +51,7 @@ public class OpportunityController {
     public String showOpportunityList(Model model) {
         RestTemplate restTemplate = new RestTemplate();
 
-        List<Opportunity> opportunityList = Arrays.asList(restTemplate.getForObject(getOpportunityListURL, Opportunity[].class));
+        List<Opportunity> opportunityList = Arrays.asList(restTemplate.getForObject(getOpportunityListURL(), Opportunity[].class));
         model.addAttribute("opportunityList", opportunityList);
         return "opportunity/opportunitylist";
     }
@@ -55,7 +66,7 @@ public class OpportunityController {
     @RequestMapping(value = "/opportunityoverview/{id}", method = RequestMethod.GET)
     public String showOpportunityOverview(@PathVariable("id") long id, Model model) {
         RestTemplate restTemplate = new RestTemplate();
-        Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL + id, Opportunity.class);
+        Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL() + id, Opportunity.class);
         model.addAttribute("opportunity", opportunity);
 
         return "opportunity/opportunityoverview";
@@ -64,15 +75,15 @@ public class OpportunityController {
     /**
      * Method to get opportunity details
      *
-     * @param oppdescription   (RequestParam)
-     * @param id               (PathVariable)
-     * @param model            (Model)
+     * @param oppdescription (RequestParam)
+     * @param id             (PathVariable)
+     * @param model          (Model)
      * @return opportunitydetails request map
      */
     @RequestMapping(value = "/opportunitydetails/{id}", method = RequestMethod.GET)
     public String showOpportunityDetails(@RequestParam(name = "oppdescription", required = false) String oppdescription, @PathVariable("id") long id, Model model) {
         RestTemplate restTemplate = new RestTemplate();
-        Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL + id, Opportunity.class);
+        Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL() + id, Opportunity.class);
 
         model.addAttribute("opportunity", opportunity);
         if (oppdescription == null) oppdescription = "1";
