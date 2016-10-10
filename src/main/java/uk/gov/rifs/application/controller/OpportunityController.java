@@ -62,17 +62,17 @@ public class OpportunityController {
      *
      * @param id    (long)
      * @param model (Model)
-     * @return opportunityoverview request map
+     * @return opportunityApplicationoverview request map
      */
-    @RequestMapping(value = "/opportunityoverview/{id}", method = RequestMethod.GET)
-    public String showOpportunityOverview(@PathVariable("id") long id, Model model) {
+    @RequestMapping(value = "/opportunityApplicationoverview/{id}", method = RequestMethod.GET)
+    public String showOpportunityAppOverview(@PathVariable("id") long id, Model model) {
         RestTemplate restTemplate = new RestTemplate();
         Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL() + id, Opportunity.class);
         Application application = restTemplate.getForObject(getSingleOpportunityURL() + id + "/application", Application.class);
         model.addAttribute("opportunity", opportunity);
         model.addAttribute("app", application);
 
-        return "opportunity/opportunityoverview";
+        return "opportunity/opportunityApplicationoverview";
     }
 
     /**
