@@ -57,23 +57,7 @@ public class OpportunityController {
         return "opportunity/opportunitylist";
     }
 
-    /**
-     * Method to get opportunity Overview
-     *
-     * @param id    (long)
-     * @param model (Model)
-     * @return opportunityApplicationoverview request map
-     */
-    @RequestMapping(value = "/opportunityApplicationoverview/{id}", method = RequestMethod.GET)
-    public String showOpportunityAppOverview(@PathVariable("id") long id, Model model) {
-        RestTemplate restTemplate = new RestTemplate();
-        Opportunity opportunity = restTemplate.getForObject(getSingleOpportunityURL() + id, Opportunity.class);
-        Application application = restTemplate.getForObject(getSingleOpportunityURL() + id + "/application", Application.class);
-        model.addAttribute("opportunity", opportunity);
-        model.addAttribute("app", application);
 
-        return "opportunity/opportunityApplicationoverview";
-    }
 
     /**
      * Method to get opportunity details
